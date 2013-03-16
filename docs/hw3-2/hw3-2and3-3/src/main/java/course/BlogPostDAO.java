@@ -112,6 +112,14 @@ public class BlogPostDAO {
     // Append a comment to a blog post
     public void addPostComment(final String name, final String email, final String body,
                                final String permalink) {
+        BasicDBObject comment = new BasicDBObject();
+        comment.append("author", name);
+        if (!StringUtils.isEmpty(email)) {
+            comment.append("email", email);
+        }
+        comment.append("body", body);
+        postsCollection.update(new BasicDBObject("permalink", permalink),
+                new BasicDBObject("$push", new BasicDBObject("comments", comment)));
 
         // XXX HW 3.3, Work Here
         // Hints:
