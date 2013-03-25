@@ -1,0 +1,10 @@
+connecting to: test
+> use blog
+switched to db blog
+> db.post.drop()
+false
+> db.posts.drop()
+true
+> db.posts.ensureIndex({date:-1})
+> db.posts.ensureIndex({tags:1})
+> db.posts.ensureIndex({permalink:1})
