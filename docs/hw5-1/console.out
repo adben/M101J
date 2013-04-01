@@ -1,0 +1,918 @@
+> db.posts.aggregate( [   { $project : { 'comments.author': 1 } },   { $unwind : "$comments" },   { $group : {     _id : { comments : "$comments" },     n : { $sum : 1 }     }   }, { $sort: {"n": -1} } ] )
+{
+	"result" : [
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Mikaela Meidinger"
+				}
+			},
+			"n" : 493
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Mariette Batdorf"
+				}
+			},
+			"n" : 483
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tawana Oberg"
+				}
+			},
+			"n" : 483
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Alica Pasley"
+				}
+			},
+			"n" : 474
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Gisela Levin"
+				}
+			},
+			"n" : 472
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Jesusa Rickenbacker"
+				}
+			},
+			"n" : 471
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Darby Wass"
+				}
+			},
+			"n" : 468
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Edgar Sarkis"
+				}
+			},
+			"n" : 468
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Eugene Magdaleno"
+				}
+			},
+			"n" : 468
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Terica Brugger"
+				}
+			},
+			"n" : 468
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Brittny Warwick"
+				}
+			},
+			"n" : 465
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Jaclyn Morado"
+				}
+			},
+			"n" : 463
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Bao Ziglar"
+				}
+			},
+			"n" : 461
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tresa Sinha"
+				}
+			},
+			"n" : 461
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tonisha Games"
+				}
+			},
+			"n" : 459
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Richelle Siemers"
+				}
+			},
+			"n" : 458
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Chad Rahe"
+				}
+			},
+			"n" : 456
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Kam Senters"
+				}
+			},
+			"n" : 456
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Carli Belvins"
+				}
+			},
+			"n" : 456
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Flora Duell"
+				}
+			},
+			"n" : 456
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Jonie Raby"
+				}
+			},
+			"n" : 455
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "aimee Zank"
+				}
+			},
+			"n" : 454
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Mariela Sherer"
+				}
+			},
+			"n" : 454
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tambra Mercure"
+				}
+			},
+			"n" : 453
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Harriett Velarde"
+				}
+			},
+			"n" : 453
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Sanda Ryba"
+				}
+			},
+			"n" : 453
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Sadie Jernigan"
+				}
+			},
+			"n" : 453
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Timothy Harrod"
+				}
+			},
+			"n" : 449
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Malisa Jeanes"
+				}
+			},
+			"n" : 448
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Joel Rueter"
+				}
+			},
+			"n" : 447
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Marcus Blohm"
+				}
+			},
+			"n" : 447
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Whitley Fears"
+				}
+			},
+			"n" : 446
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Leonida Lafond"
+				}
+			},
+			"n" : 446
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Daphne Zheng"
+				}
+			},
+			"n" : 446
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Elizabet Kleine"
+				}
+			},
+			"n" : 446
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Gennie Ratner"
+				}
+			},
+			"n" : 445
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Dodie Staller"
+				}
+			},
+			"n" : 445
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Beckie Millington"
+				}
+			},
+			"n" : 445
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Aleida Elsass"
+				}
+			},
+			"n" : 445
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Danika Loeffler"
+				}
+			},
+			"n" : 443
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tressa Schwing"
+				}
+			},
+			"n" : 443
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Jenise Mcguffie"
+				}
+			},
+			"n" : 443
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Merissa Mann"
+				}
+			},
+			"n" : 443
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Rudolph Domingo"
+				}
+			},
+			"n" : 442
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Salena Olmos"
+				}
+			},
+			"n" : 442
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tamika Schildgen"
+				}
+			},
+			"n" : 441
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Toshiko Sabella"
+				}
+			},
+			"n" : 440
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Jenette Flanders"
+				}
+			},
+			"n" : 440
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Lucinda Vanderburg"
+				}
+			},
+			"n" : 440
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Houston Valenti"
+				}
+			},
+			"n" : 440
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Fleta Duplantis"
+				}
+			},
+			"n" : 440
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Adrien Renda"
+				}
+			},
+			"n" : 439
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Barbera Lippman"
+				}
+			},
+			"n" : 438
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tonia Surace"
+				}
+			},
+			"n" : 438
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Gwyneth Garling"
+				}
+			},
+			"n" : 438
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Vinnie Auerbach"
+				}
+			},
+			"n" : 438
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Carli Ector"
+				}
+			},
+			"n" : 437
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tandra Meadows"
+				}
+			},
+			"n" : 437
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Kayce Kenyon"
+				}
+			},
+			"n" : 437
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Santiago Dollins"
+				}
+			},
+			"n" : 437
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Wilburn Spiess"
+				}
+			},
+			"n" : 437
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Alix Sherrill"
+				}
+			},
+			"n" : 436
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Echo Pippins"
+				}
+			},
+			"n" : 436
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Meagan Oakes"
+				}
+			},
+			"n" : 436
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Margart Vitello"
+				}
+			},
+			"n" : 435
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Gwen Honig"
+				}
+			},
+			"n" : 435
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Leola Lundin"
+				}
+			},
+			"n" : 435
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Ta Sikorski"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Cassi Heal"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Gena Riccio"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Kim Xu"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Osvaldo Hirt"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Synthia Labelle"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Kaila Deibler"
+				}
+			},
+			"n" : 434
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Tania Hulett"
+				}
+			},
+			"n" : 433
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Omar Bowdoin"
+				}
+			},
+			"n" : 433
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Maren Scheider"
+				}
+			},
+			"n" : 433
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Zachary Langlais"
+				}
+			},
+			"n" : 433
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Linnie Weigel"
+				}
+			},
+			"n" : 432
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Lady Lefevers"
+				}
+			},
+			"n" : 430
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Joaquina Arbuckle"
+				}
+			},
+			"n" : 430
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Quincy Danaher"
+				}
+			},
+			"n" : 430
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Demarcus Audette"
+				}
+			},
+			"n" : 430
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Dinah Sauve"
+				}
+			},
+			"n" : 429
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Rae Kohout"
+				}
+			},
+			"n" : 428
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Corliss Zuk"
+				}
+			},
+			"n" : 427
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Ty Barbieri"
+				}
+			},
+			"n" : 427
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Laureen Salomone"
+				}
+			},
+			"n" : 426
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Verdell Sowinski"
+				}
+			},
+			"n" : 425
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Brain Lachapelle"
+				}
+			},
+			"n" : 425
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Jessika Dagenais"
+				}
+			},
+			"n" : 424
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Dusti Lemmond"
+				}
+			},
+			"n" : 423
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Keesha Papadopoulos"
+				}
+			},
+			"n" : 423
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Vina Matsunaga"
+				}
+			},
+			"n" : 422
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Devorah Smartt"
+				}
+			},
+			"n" : 422
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : ""
+				}
+			},
+			"n" : 421
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Ernestine Macfarland"
+				}
+			},
+			"n" : 421
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Fletcher Mcconnell"
+				}
+			},
+			"n" : 420
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Shin Allbright"
+				}
+			},
+			"n" : 420
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Rubie Winton"
+				}
+			},
+			"n" : 419
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Denisha Cast"
+				}
+			},
+			"n" : 417
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Aurelia Menendez"
+				}
+			},
+			"n" : 416
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Cody Strouth"
+				}
+			},
+			"n" : 415
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Nobuko Linzey"
+				}
+			},
+			"n" : 415
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Grady Zemke"
+				}
+			},
+			"n" : 412
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Milan Mcgavock"
+				}
+			},
+			"n" : 411
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Rosana Vales"
+				}
+			},
+			"n" : 411
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Kurtis Jiles"
+				}
+			},
+			"n" : 411
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Rachell Aman"
+				}
+			},
+			"n" : 410
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Mercedez Garduno"
+				}
+			},
+			"n" : 409
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Len Treiber"
+				}
+			},
+			"n" : 404
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Myrtle Wolfinger"
+				}
+			},
+			"n" : 404
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Karry Petrarca"
+				}
+			},
+			"n" : 402
+		},
+		{
+			"_id" : {
+				"comments" : {
+					"author" : "Efrain Claw"
+				}
+			},
+			"n" : 384
+		}
+	],
+	"ok" : 1
+}

@@ -1,0 +1,13 @@
+> use states
+switched to db states
+> db.zips.aggregate([   {     "$match": {       state: {"$in": ["CA", "NY"]}     }   },   {     "$group": {       "_id": {"state": "$state", "city": "$city"},       tPop: {"$sum": "$pop" }     }   },   {     "$match": {       "tPop": { "$gt": 25000 }     }   },    {     "$group": {       _id: "$state",       average: {"$avg": "$tPop"}     }   } ])
+{
+	"result" : [
+		{
+			"_id" : null,
+			"average" : 82541.46420824295
+		}
+	],
+	"ok" : 1
+}
+>
