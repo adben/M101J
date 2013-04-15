@@ -1,0 +1,93 @@
+<<< ~/Documents/mongotraining/docs/hw6-5
+>>> ./mongod --replSet m101 --logpath "1.log" --dbpath /data/rs1 --port 27017 --smallfiles --fork
+zsh: no such file or directory: ./mongod
+<<< ~/Documents/mongotraining/docs/hw6-5
+>>> mongod --replSet m101 --logpath "1.log" --dbpath /data/rs1 --port 27017 --smallfiles --fork
+forked process: 29624
+all output going to: /Users/abenedetti/Documents/mongotraining/docs/hw6-5/1.log
+child process started successfully, parent exiting
+<<< ~/Documents/mongotraining/docs/hw6-5
+>>> mongod --replSet m101 --logpath "2.log" --dbpath /data/rs2 --port 27018 --smallfiles --fork
+forked process: 29639
+all output going to: /Users/abenedetti/Documents/mongotraining/docs/hw6-5/2.log
+child process started successfully, parent exiting
+<<< ~/Documents/mongotraining/docs/hw6-5
+>>> mongod --replSet m101 --logpath "3.log" --dbpath /data/rs3 --port 27019 --smallfiles --fork
+forked process: 29654
+all output going to: /Users/abenedetti/Documents/mongotraining/docs/hw6-5/3.log
+child process started successfully, parent exiting 
+>>> mongo --port 27017                                                                       ‹git:master ☁ › 22:44.47 za apr 06 2013 >>>
+MongoDB shell version: 2.2.3
+connecting to: 127.0.0.1:27017/test
+> config = { _id: "m101", members:[
+...           { _id : 0, host : "localhost:27017"},
+...           { _id : 1, host : "localhost:27018"},
+...           { _id : 2, host : "localhost:27019"} ]
+... };
+{
+	"_id" : "m101",
+	"members" : [
+		{
+			"_id" : 0,
+			"host" : "localhost:27017"
+		},
+		{
+			"_id" : 1,
+			"host" : "localhost:27018"
+		},
+		{
+			"_id" : 2,
+			"host" : "localhost:27019"
+		}
+	]
+}
+> rs.initiate(config);
+{
+	"info" : "Config now saved locally.  Should come online in about a minute.",
+	"ok" : 1
+}
+> rs.status()
+{
+	"set" : "m101",
+	"date" : ISODate("2013-04-08T09:31:03Z"),
+	"myState" : 2,
+	"members" : [
+		{
+			"_id" : 0,
+			"name" : "localhost:27017",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 90,
+			"optime" : Timestamp(1365413451000, 1),
+			"optimeDate" : ISODate("2013-04-08T09:30:51Z"),
+			"self" : true
+		},
+		{
+			"_id" : 1,
+			"name" : "localhost:27018",
+			"health" : 1,
+			"state" : 5,
+			"stateStr" : "STARTUP2",
+			"uptime" : 10,
+			"optime" : Timestamp(0, 0),
+			"optimeDate" : ISODate("1970-01-01T00:00:00Z"),
+			"lastHeartbeat" : ISODate("2013-04-08T09:31:01Z"),
+			"pingMs" : 0
+		},
+		{
+			"_id" : 2,
+			"name" : "localhost:27019",
+			"health" : 1,
+			"state" : 5,
+			"stateStr" : "STARTUP2",
+			"uptime" : 10,
+			"optime" : Timestamp(0, 0),
+			"optimeDate" : ISODate("1970-01-01T00:00:00Z"),
+			"lastHeartbeat" : ISODate("2013-04-08T09:31:01Z"),
+			"pingMs" : 0
+		}
+	],
+	"ok" : 1
+}
+m101:SECONDARY>

@@ -1,0 +1,14 @@
+Add an index on last_name, first_name if one does not already exist.
+no
+
+Set w=0, j=0 on writes.
+yes, decreases the overhead for each insert.
+
+Remove all indexes from the collection.
+yes. Updating of indexes gives the most overhead for insert operations.
+
+Provide a hint to MongoDB that it should not use an index for the inserts.
+no https://groups.google.com/forum/?fromgroups=#!topic/mongodb-user/YJy9rrsNh2c
+
+Build a replica set and insert data into the secondary nodes to free up the primary nodes.
+Is not possible to insert data to secondary nodes.

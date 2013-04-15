@@ -1,0 +1,72 @@
+<<< ~/Documents/mongotraining/docs/final/1
+>>> cp ~/Downloads/enron.0708d010cd81.zip ./enron.zip                                        ‹git:master ☁ › 22:56.29 vr apr 12 2013 >>>
+<<< ~/Documents/mongotraining/docs/final/1
+>>> unzip enron.zip                                                                          ‹git:master ☁ › 22:59.25 vr apr 12 2013 >>>
+Archive:  enron.zip
+   creating: dump/enron/
+  inflating: dump/enron/messages.bson
+  inflating: dump/enron/messages.metadata.json
+<<< ~/Documents/mongotraining/docs/final/1
+>>> ls                                                                                       ‹git:master ☁ › 22:59.37 vr apr 12 2013 >>>
+dump      enron.zip
+<<< ~/Documents/mongotraining/docs/final/1
+>>> mongorestore --drop --db enron dump/enron                                                ‹git:master ☁ › 23:00.02 vr apr 12 2013 >>>
+connected to: 127.0.0.1
+Fri Apr 12 23:00:07 dump/enron/messages.bson
+Fri Apr 12 23:00:07 	going into namespace [enron.messages]
+Fri Apr 12 23:00:07 	 dropping
+Fri Apr 12 23:00:10 		5097807/396236668	1%	(bytes)
+Fri Apr 12 23:00:13 		71659581/396236668	18%	(bytes)
+Fri Apr 12 23:00:18 		77777873/396236668	19%	(bytes)
+Fri Apr 12 23:00:21 		109127792/396236668	27%	(bytes)
+Fri Apr 12 23:00:24 		160338271/396236668	40%	(bytes)
+Fri Apr 12 23:00:27 		197717445/396236668	49%	(bytes)
+Fri Apr 12 23:00:30 		209665719/396236668	52%	(bytes)
+Fri Apr 12 23:00:33 		227400576/396236668	57%	(bytes)
+Fri Apr 12 23:00:36 		261476647/396236668	65%	(bytes)
+Fri Apr 12 23:00:39 		286032546/396236668	72%	(bytes)
+Fri Apr 12 23:00:42 		307016994/396236668	77%	(bytes)
+Fri Apr 12 23:00:45 		331090899/396236668	83%	(bytes)
+Fri Apr 12 23:00:48 		350724178/396236668	88%	(bytes)
+Fri Apr 12 23:00:51 		373022275/396236668	94%	(bytes)
+Fri Apr 12 23:00:56 		377423546/396236668	95%	(bytes)
+120477 objects found
+Fri Apr 12 23:00:58 	Creating index: { key: { _id: 1 }, ns: "enron.messages", name: "_id_" }
+<<< ~/Documents/mongotraining/docs/final/1
+>>> mongo                                                                                    ‹git:master ☁ › 23:01.01 vr apr 12 2013 >>>
+MongoDB shell version: 2.2.3
+connecting to: test
+> use enron
+switched to db enron
+> db.messages.findOne()
+{
+	"_id" : ObjectId("4f16fc97d1e2d32371003f02"),
+	"body" : "COURTYARD\n\nMESQUITE\n2300 HWY 67\nMESQUITE, TX  75150\ntel: 972-681-3300\nfax: 972-681-3324\n\nHotel Information: http://courtyard.com/DALCM\n\n\nARRIVAL CONFIRMATION:\n Confirmation Number:84029698\nGuests in Room: 2\nNAME: MR ERIC  BASS \nGuest Phone: 7138530977\nNumber of Rooms:1\nArrive: Oct 6 2001\nDepart: Oct 7 2001\nRoom Type: ROOM - QUALITY\nGuarantee Method:\n Credit card guarantee\nCANCELLATION PERMITTED-BEFORE 1800 DAY OF ARRIVAL\n\nRATE INFORMATION:\nRate(s) Quoted in: US DOLLAR\nArrival Date: Oct 6 2001\nRoom Rate: 62.10  per night. Plus tax when applicable\nRate Program: AAA AMERICAN AUTO ASSN\n\nSPECIAL REQUEST:\n NON-SMOKING ROOM, GUARANTEED\n   \n\n\nPLEASE DO NOT REPLY TO THIS EMAIL \nAny Inquiries Please call 1-800-321-2211 or your local\ninternational toll free number.\n \nConfirmation Sent: Mon Jul 30 18:19:39 2001\n\nLegal Disclaimer:\nThis confirmation notice has been transmitted to you by electronic\nmail for your convenience. Marriott's record of this confirmation\nnotice is the official record of this reservation. Subsequent\nalterations to this electronic message after its transmission\nwill be disregarded.\n\nMarriott is pleased to announce that High Speed Internet Access is\nbeing rolled out in all Marriott hotel brands around the world.\nTo learn more or to find out whether your hotel has the service\navailable, please visit Marriott.com.\n\nEarn points toward free vacations, or frequent flyer miles\nfor every stay you make!  Just provide your Marriott Rewards\nmembership number at check in.  Not yet a member?  Join for free at\nhttps://member.marriottrewards.com/Enrollments/enroll.asp?source=MCRE\n\n",
+	"filename" : "2.",
+	"headers" : {
+		"Content-Transfer-Encoding" : "7bit",
+		"Content-Type" : "text/plain; charset=us-ascii",
+		"Date" : ISODate("2001-07-30T22:19:40Z"),
+		"From" : "reservations@marriott.com",
+		"Message-ID" : "<32788362.1075840323896.JavaMail.evans@thyme>",
+		"Mime-Version" : "1.0",
+		"Subject" : "84029698 Marriott  Reservation Confirmation Number",
+		"To" : [
+			"ebass@enron.com"
+		],
+		"X-FileName" : "eric bass 6-25-02.PST",
+		"X-Folder" : "\\ExMerge - Bass, Eric\\Personal",
+		"X-From" : "Reservations@Marriott.com",
+		"X-Origin" : "BASS-E",
+		"X-To" : "EBASS@ENRON.COM",
+		"X-bcc" : "",
+		"X-cc" : ""
+	},
+	"mailbox" : "bass-e",
+	"subFolder" : "personal"
+}
+> db.messages.find({"headers.From":"andrew.fastow@enron.com","headers.To":"jeff.skilling@enron.com"}).count()
+3
+> db.messages.find({"headers.From":"andrew.fastow@enron.com","headers.To":"john.lavorato@enron.com"}).count()
+1
+>

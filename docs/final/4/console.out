@@ -1,0 +1,9 @@
+>>> python final4-validate.py                                                                ‹git:master ☁ › 09:14.32 za apr 13 2013 >>>
+Welcome to the M101 Final Exam, Question 4 Validation CheckerTrying to grab the blog home page at url and find the first post. http://localhost:8082/
+Fount a post url:  /post/mxwnnnqaflufnqwlekfd
+Trying to grab the number of likes for url  http://localhost:8082/post/mxwnnnqaflufnqwlekfd
+Likes value  1
+Clicking on Like link for post:  /post/mxwnnnqaflufnqwlekfd
+Trying to grab the number of likes for url  http://localhost:8082/post/mxwnnnqaflufnqwlekfd
+Likes value  2
+Tests Passed for Final 4. Your validation code is 983nf93ncafjn20fn10f

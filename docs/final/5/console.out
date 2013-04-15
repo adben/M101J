@@ -1,0 +1,180 @@
+>>> nano 5.js                                                                                ‹git:master ☁ › 09:24.57 za apr 13 2013 >>>
+  GNU nano 2.0.6                                   File: 5.js
+
+for(i = 1; i < 100000; i++) {
+        db.fubar.save({
+                a: parseInt(Math.random() * 100000),
+                b: parseInt(Math.random() * 100000),
+                c: parseInt(Math.random() * 100000)
+        });
+}
+db.fubar.ensureIndex({a:1, b:1})
+db.fubar.ensureIndex({a:1, c:1})
+db.fubar.ensureIndex({c:1})
+db.fubar.ensureIndex({a:1, b:1, c:-1})
+
+>>> mongo fubar --shell 5.js                                                                 ‹git:master ☁ › 09:25.52 za apr 13 2013 >>>
+MongoDB shell version: 2.2.3
+connecting to: fubar
+type "help" for help
+> db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).hint('_id_').explain()
+{
+	"cursor" : "BtreeCursor _id_",
+	"isMultiKey" : false,
+	"n" : 9611,
+	"nscannedObjects" : 99999,
+	"nscanned" : 99999,
+	"nscannedObjectsAllPlans" : 99999,
+	"nscannedAllPlans" : 99999,
+	"scanAndOrder" : true,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 183,
+	"indexBounds" : {
+		"_id" : [
+			[
+				{
+					"$minElement" : 1
+				},
+				{
+					"$maxElement" : 1
+				}
+			]
+		]
+	},
+	"server" : "adbenosx.local:27017"
+}
+> db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).hint('a_1_b_1').explain()
+{
+	"cursor" : "BtreeCursor a_1_b_1",
+	"isMultiKey" : false,
+	"n" : 9611,
+	"nscannedObjects" : 9611,
+	"nscanned" : 10107,
+	"nscannedObjectsAllPlans" : 9611,
+	"nscannedAllPlans" : 10107,
+	"scanAndOrder" : true,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 68,
+	"indexBounds" : {
+		"a" : [
+			[
+				-1.7976931348623157e+308,
+				10000
+			]
+		],
+		"b" : [
+			[
+				5000,
+				1.7976931348623157e+308
+			]
+		]
+	},
+	"server" : "adbenosx.local:27017"
+}
+> db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).hint('a_1_c_1').explain()
+{
+	"cursor" : "BtreeCursor a_1_c_1",
+	"isMultiKey" : false,
+	"n" : 9611,
+	"nscannedObjects" : 10123,
+	"nscanned" : 10123,
+	"nscannedObjectsAllPlans" : 10123,
+	"nscannedAllPlans" : 10123,
+	"scanAndOrder" : true,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 69,
+	"indexBounds" : {
+		"a" : [
+			[
+				-1.7976931348623157e+308,
+				10000
+			]
+		],
+		"c" : [
+			[
+				{
+					"$minElement" : 1
+				},
+				{
+					"$maxElement" : 1
+				}
+			]
+		]
+	},
+	"server" : "adbenosx.local:27017"
+}
+> db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).hint('c_1').explain()
+{
+	"cursor" : "BtreeCursor c_1 reverse",
+	"isMultiKey" : false,
+	"n" : 9611,
+	"nscannedObjects" : 99999,
+	"nscanned" : 99999,
+	"nscannedObjectsAllPlans" : 99999,
+	"nscannedAllPlans" : 99999,
+	"scanAndOrder" : false,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 136,
+	"indexBounds" : {
+		"c" : [
+			[
+				{
+					"$maxElement" : 1
+				},
+				{
+					"$minElement" : 1
+				}
+			]
+		]
+	},
+	"server" : "adbenosx.local:27017"
+}
+> db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).hint('a_1_b_1_c_-1').explain()
+{
+	"cursor" : "BtreeCursor a_1_b_1_c_-1",
+	"isMultiKey" : false,
+	"n" : 9611,
+	"nscannedObjects" : 9611,
+	"nscanned" : 10107,
+	"nscannedObjectsAllPlans" : 9611,
+	"nscannedAllPlans" : 10107,
+	"scanAndOrder" : true,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 64,
+	"indexBounds" : {
+		"a" : [
+			[
+				-1.7976931348623157e+308,
+				10000
+			]
+		],
+		"b" : [
+			[
+				5000,
+				1.7976931348623157e+308
+			]
+		],
+		"c" : [
+			[
+				{
+					"$maxElement" : 1
+				},
+				{
+					"$minElement" : 1
+				}
+			]
+		]
+	},
+	"server" : "adbenosx.local:27017"
+}
+>

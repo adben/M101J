@@ -1,0 +1,8 @@
+> db.messages.update({"headers.Message-ID":"<8147308.1075851042335.JavaMail.evans@thyme>"}, {$addToSet: {"headers.To": "mrpotatohead@10gen.com"}}, {multi: 1})
+>
+
+
+>>> python final3-validate.py                                                                                                                                                                                                            ‹git:master ☁ › 23:11.38 vr apr 12 2013 >>>
+Welcome to the Final Exam, Problem 3 Checker. My job is to make sure you updated the doc correctly
+Tests Passed for Final 3. Your Final 3 validation code is 897h6723ghf25gd87gh28
+
